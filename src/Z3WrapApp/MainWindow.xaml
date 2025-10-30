@@ -1,0 +1,105 @@
+﻿<Window x:Class="Z3WrapApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Z3WrapApp"
+        mc:Ignorable="d"
+        Title="Z3Wrap" Height="450" Width="800" WindowState="Maximized">
+    <DockPanel>
+
+        <!-- Toolbar -->
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Name="BtnOpen" Click="BtnOpen_Click" Padding="10,2" ToolTip="Open SMT2 file">Open</Button>
+                <Button Name="BtnSave" Click="BtnSave_Click" Padding="10,2" ToolTip="Save script">Save</Button>
+                <Separator/>
+                <Button Name="BtnRun" Click="BtnRun_Click" Padding="10,2" ToolTip="Run with Z3">Run</Button>
+                <Button Name="BtnStop" Click="BtnStop_Click" Padding="10,2" ToolTip="Cancel/Stop">Stop</Button>
+                <Separator/>
+                <Button Name="BtnClear" Click="BtnClear_Click" Padding="10,2" ToolTip="Clear output">Clear</Button>
+                <Separator/>
+                <TextBlock VerticalAlignment="Center" Margin="10,0,4,0">Timeout (ms):</TextBlock>
+                <TextBox Name="TxtTimeout" Width="80" Text="10000" />
+                <Separator/>
+                <TextBlock VerticalAlignment="Center" Margin="10,0,4,0">Z3 Path:</TextBlock>
+                <TextBox Name="TxtZ3Path" Width="300" ToolTip="Leave empty to use Z3 on PATH" Text="C:\Users\wowod\Desktop\z3-4.15.4-x64-win\z3-4.15.4-x64-win\bin\z3.exe" />
+                <Separator/>
+                <CheckBox Name="ChkModel" Content=" -model " Margin="10,0,0,0" IsChecked="True"/>
+                <CheckBox Name="ChkStats" Content=" -stats " Margin="10,0,0,0"/>
+                <CheckBox Name="ChkVerbose" Content=" -v:10 " Margin="10,0,0,0"/>
+            </ToolBar>
+        </ToolBarTray>
+
+        <!-- Status bar -->
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="LblStatus" Text="Ready." />
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem>
+                <TextBlock Name="LblExitCode" Text="ExitCode: -" />
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem>
+                <TextBlock Name="LblTimedOut" Text="TimedOut: -" />
+            </StatusBarItem>
+        </StatusBar>
+
+        <!-- Main content: left input / right output -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="6" />
+                <!-- splitter thickness -->
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Input -->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="SMT-LIB2 Script" FontWeight="Bold" Padding="8,6" />
+                <ScrollViewer Grid.Row="1">
+                    <TextBox Name="TxtInput"
+                             AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto"
+                             TextWrapping="NoWrap" FontFamily="Consolas" FontSize="14"
+                             Text="{Binding ScriptText, UpdateSourceTrigger=PropertyChanged}"
+                             />
+                </ScrollViewer>
+            </Grid>
+
+            <!-- Splitter -->
+            <GridSplitter Grid.Column="1" Width="6" HorizontalAlignment="Stretch" Background="#EEE" />
+
+            <!-- Output -->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Z3 Output" FontWeight="Bold" Padding="8,6" />
+                <TabControl Grid.Row="1">
+                    <TabItem Header="StdOut">
+                        <ScrollViewer>
+                            <TextBox Name="TxtStdOut" IsReadOnly="True" TextWrapping="NoWrap"
+                                     AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                                     FontFamily="Consolas" FontSize="14"/>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="StdErr">
+                        <ScrollViewer>
+                            <TextBox Name="TxtStdErr" IsReadOnly="True" TextWrapping="NoWrap"
+                                     AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                                     FontFamily="Consolas" FontSize="14"/>
+                        </ScrollViewer>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>
