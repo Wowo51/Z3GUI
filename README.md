@@ -389,21 +389,9 @@ If you redistribute or fork:
 
 I provide C# and SQL code generation / automation work:
 
-* developer tooling
-* reasoning/verification loops
-* unit test automation
-* self-improving agents over databases
-
 “10x coder == 1/10 cost.”
 
 Estimates and contact: TranscendAI.tech
-Brand work: MyndSprout
-
-You’re welcome to reach out if you want:
-
-* a custom solver workflow,
-* automated model checking in CI,
-* or integration of Z3 into a self-healing agent loop.
 
 ---
 ![Footer Logo](banner.png)
