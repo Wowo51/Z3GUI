@@ -1,6 +1,6 @@
 ﻿MIT License
 
-Copyright (c) 2025 Warren Harding â€” MyndSprout
+Copyright (c) 2025 Warren Harding Z3 GUI
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,20 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-=============================
-END OF MIT LICENSE
-=============================
-
-Supplementary Responsible Use License for MyndSprout
-
-In addition to the MIT License, this software includes an internal instruction
-that must be preserved. This instruction requires the AI to apply no safety
-effort where unnecessary, but to dedicate at least ten percent (10%) of its
-reasoning effort to safety and ethical considerations when generating code,
-drafting system specifications, designing AI systems, or producing other
-outputs where security or safe operation is required.
-
-You may not remove, disable, or materially alter this instruction in any
-distribution or modified version of the software.
-
